@@ -18,7 +18,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="description" content="Learn how to use the Firebase platform on the Web">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Friendly Chat</title>
+  <title>Talk 'n Transit</title>
 
   <!-- Disable tap highlight on IE -->
   <meta name="msapplication-tap-highlight" content="no">
@@ -30,16 +30,6 @@
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="application-name" content="Friendly Chat">
   <meta name="theme-color" content="#303F9F">
-
-  <!-- Add to homescreen for Safari on iOS -->
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="apple-mobile-web-app-title" content="Friendly Chat">
-  <meta name="apple-mobile-web-app-status-bar-style" content="#303F9F">
-
-  <!-- Tile icon for Win8 -->
-  <meta name="msapplication-TileColor" content="#3372DF">
-  <meta name="msapplication-navbutton-color" content="#303F9F">
 
   <!-- Material Design Lite -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -54,9 +44,21 @@
 <body>
   <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
     <main class="mdl-layout__content mdl-color--grey-100">
-      <div id="sidebar"><span id="yourprofile">Your Profile</span></div>
+      <div id="sidebar">
+        <span id="yourprofile">Your Profile</span><br>
+        <img src="images/wolf.jpg"/><br><br>
+        <span id="username">LOLXD123</span><br>
+        <hr>
+        <span id="topics">Potential Topics</span><br>
+        <span>Option 1</span><br>
+        <span>Option 2</span><br>
+        <span>Option 3</span><br>
+        <span>Option 4</span><br>
+        <br><br>
+        <span id="busNum">You are on: <b><em>Bus 23W</em></b></span>
+      </div>
       <div id="messages-card-container" class="mdl-cell mdl-cell--12-col mdl-grid">
-        <div id="messages-card" class="mdl-card mdl-cell mdl-cell--12-col mdl-cell--6-col-tablet mdl-cell--6-col-desktop">
+        <div id="messages-card" class="mdl-card mdl-cell mdl-cell--12-col mdl-cell--6-col-desktop">
           <div class="mdl-card__supporting-text mdl-color-text--grey-600">
             <div id="messages">
               <span id="message-filler"></span>

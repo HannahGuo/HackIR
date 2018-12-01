@@ -15,13 +15,6 @@
  */
 'use strict';
 
-function getProfilePicUrl(p) {
-  if (p == "welcomeBot") {
-    return "/images/welcome_bot.png";
-  }
-  return "/images/profile_placeholder.png";
-}
-
 function getUserName() {
   return "bob";
 }
@@ -29,7 +22,7 @@ function getUserName() {
 function loadMessages() {
   var callback = function (snap) {
     var data = snap.val();
-    displayMessage(snap.key, data.name, data.text, data.profilePicUrl, data.imageUrl);
+    displayMessage(snap.key, data.name, data.text, data.profilePicUrl);
   };
 
   firebase.database().ref('/messages/').limitToLast(50).on('child_added', callback);
@@ -41,7 +34,7 @@ function saveMessage(messageText) {
   return firebase.database().ref('/messages/').push({
     name: getUserName(),
     text: messageText,
-    profilePicUrl: getProfilePicUrl()
+    profilePicUrl: getProfilePicUrl("welcomeBot")
   }).catch(function (error) {
     console.error('Error writing new message to Realtime Database:', error);
   });
@@ -71,7 +64,7 @@ var MESSAGE_TEMPLATE =
 
 var LOADING_IMAGE_URL = 'https://www.google.com/images/spin-32.gif?a';
 
-function displayMessage(key, name, text, imageUrl) {
+function displayMessage(key, name, text) {
   var div = document.getElementById(key);
   // If an element for that message does not exists yet we create it.
   if (!div) {
@@ -81,7 +74,7 @@ function displayMessage(key, name, text, imageUrl) {
     div.setAttribute('id', key);
     messageListElement.appendChild(div);
   }
-  
+
   div.querySelector('.name').textContent = name;
   var messageElement = div.querySelector('.message');
   messageElement.textContent = text;
@@ -115,8 +108,6 @@ var messageListElement = document.getElementById('messages');
 var messageFormElement = document.getElementById('message-form');
 var messageInputElement = document.getElementById('message');
 var submitButtonElement = document.getElementById('submit');
-var userPicElement = document.getElementById('user-pic');
-var userNameElement = document.getElementById('user-name');
 
 // Saves message on form submit.
 messageFormElement.addEventListener('submit', onMessageFormSubmit);
