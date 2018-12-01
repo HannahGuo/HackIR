@@ -1,28 +1,13 @@
-/**
- * Copyright 2018 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 'use strict';
 
 function getUserName() {
-  return "bob";
+  return localStorage.getItem("username").substring(15);
 }
 
 function loadMessages() {
   var callback = function (snap) {
     var data = snap.val();
-    displayMessage(snap.key, data.name, data.text, data.profilePicUrl);
+    displayMessage(snap.key, data.name, data.text);
   };
 
   firebase.database().ref('/messages/').limitToLast(50).on('child_added', callback);
@@ -30,11 +15,9 @@ function loadMessages() {
 }
 
 function saveMessage(messageText) {
-  console.log("this ran");
   return firebase.database().ref('/messages/').push({
     name: getUserName(),
     text: messageText,
-    profilePicUrl: getProfilePicUrl("welcomeBot")
   }).catch(function (error) {
     console.error('Error writing new message to Realtime Database:', error);
   });
@@ -66,7 +49,6 @@ var LOADING_IMAGE_URL = 'https://www.google.com/images/spin-32.gif?a';
 
 function displayMessage(key, name, text) {
   var div = document.getElementById(key);
-  // If an element for that message does not exists yet we create it.
   if (!div) {
     var container = document.createElement('div');
     container.innerHTML = MESSAGE_TEMPLATE;
@@ -80,7 +62,6 @@ function displayMessage(key, name, text) {
   messageElement.textContent = text;
   messageElement.innerHTML = messageElement.innerHTML.replace(/\n/g, '<br>');
 
-  // Show the card fading-in and scroll to view the new message.
   setTimeout(function () {
     div.classList.add('visible')
   }, 1);
@@ -93,28 +74,63 @@ function toggleButton() {
   else submitButtonElement.setAttribute('disabled', 'true');
 }
 
-function checkSetup() {
-  if (!window.firebase || !(firebase.app instanceof Function) || !firebase.app().options) {
-    window.alert('You have not configured and imported the Firebase SDK. ' +
-      'Make sure you go through the codelab setup instructions and make ' +
-      'sure you are running the codelab using `firebase serve`');
-  }
-}
-
-checkSetup();
-
-// Shortcuts to DOM Elements.
 var messageListElement = document.getElementById('messages');
 var messageFormElement = document.getElementById('message-form');
 var messageInputElement = document.getElementById('message');
 var submitButtonElement = document.getElementById('submit');
 
-// Saves message on form submit.
 messageFormElement.addEventListener('submit', onMessageFormSubmit);
-
-// Toggle for the button.
 messageInputElement.addEventListener('keyup', toggleButton);
 messageInputElement.addEventListener('change', toggleButton);
 
-// We load currently existing chat messages and listen to new ones.
+function showGameQ() {
+  document.getElementById("game").innerHTML = localStorage.getItem("games");
+}
+
+function showName() {
+  document.getElementById("username").innerHTML = localStorage.getItem("username");
+}
+
+function generateTopic(rand) {
+  return topics[rand];
+}
+
+var topics = [
+  "Favourite Movie",
+  "Recent Marvel Events",
+  "Harry Potter",
+  "Favourite bands", 
+  "Favourite Foods", 
+  "Latest Movie You've seen", 
+  "Favourite Subject", 
+  "Dream Jobs",
+  "Marvel vs. DC"
+]
+
+function genTop() {
+  var rand = Math.floor(Math.random() * (topics.length));
+
+  var genTop = [generateTopic(rand), generateTopic(rand - 1), generateTopic(rand - 2), generateTopic(rand - 3)];
+  
+  if(genTop[1] === undefined) {
+    genTop[1] = generateTopic(rand + 1);
+  }
+
+  if(genTop[2] === undefined) {
+    genTop[2] = generateTopic(rand + 2);
+  }
+
+  if(genTop[3] === undefined) {
+    genTop[3] = generateTopic(rand + 3);
+  }
+
+  document.getElementById("top1").innerHTML = genTop[0];
+  document.getElementById("top2").innerHTML = genTop[1];
+  document.getElementById("top3").innerHTML = genTop[2];
+  document.getElementById("top4").innerHTML = genTop[3];
+}
+
+window.onload = showName;
+window.onload = genTop;
+
 loadMessages();

@@ -1,92 +1,35 @@
-<!doctype html>
-<!--
-  Copyright 2015 Google Inc. All rights reserved.
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-      https://www.apache.org/licenses/LICENSE-2.0
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License
--->
-<html lang="en">
+<!DOCTYPE html>
+<html lang="eng">
 
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="description" content="Learn how to use the Firebase platform on the Web">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Talk 'n Transit</title>
-
-  <!-- Disable tap highlight on IE -->
-  <meta name="msapplication-tap-highlight" content="no">
-
-  <!-- Web Application Manifest -->
-  <link rel="manifest" href="manifest.json">
-
-  <!-- Add to homescreen for Chrome on Android -->
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="application-name" content="Friendly Chat">
-  <meta name="theme-color" content="#303F9F">
-
-  <!-- Material Design Lite -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
-  <link rel="stylesheet" href="https://code.getmdl.io/1.1.3/material.orange-indigo.min.css">
-  <script defer src="https://code.getmdl.io/1.1.3/material.min.js"></script>
-
-  <!-- App Styling -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:regular,bold,italic,thin,light,bolditalic,black,medium&amp;lang=en">
-  <link rel="stylesheet" href="styles/main.css">
+  <title>Talk'n Transit</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" media="screen" href="styles/ls.css" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 </head>
 
 <body>
-  <div class="demo-layout mdl-layout mdl-js-layout mdl-layout--fixed-header">
-    <main class="mdl-layout__content mdl-color--grey-100">
-      <div id="sidebar">
-        <span id="yourprofile">Your Profile</span><br>
-        <img src="images/wolf.jpg"/><br><br>
-        <span id="username">LOLXD123</span><br>
-        <hr>
-        <span id="topics">Potential Topics</span><br>
-        <span>Option 1</span><br>
-        <span>Option 2</span><br>
-        <span>Option 3</span><br>
-        <span>Option 4</span><br>
-        <br><br>
-        <span id="busNum">You are on: <b><em>Bus 23W</em></b></span>
-      </div>
-      <div id="messages-card-container" class="mdl-cell mdl-cell--12-col mdl-grid">
-        <div id="messages-card" class="mdl-card mdl-cell mdl-cell--12-col mdl-cell--6-col-desktop">
-          <div class="mdl-card__supporting-text mdl-color-text--grey-600">
-            <div id="messages">
-              <span id="message-filler"></span>
-            </div>
-            <form id="message-form" action="#">
-              <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                <input class="mdl-textfield__input" type="text" id="message">
-                <label class="mdl-textfield__label" for="message">Message...</label>
-              </div>
-              <button id="submit" disabled type="submit" class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect">
-                Send
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </main>
+  <div class="header">
+    <h1>Talk'n Transit</h1>
   </div>
-
-  <!-- Import and configure the Firebase SDK -->
-  <!-- These scripts are made available when the app is served or deployed on Firebase Hosting -->
-  <script src="/__/firebase/5.6.0/firebase-app.js"></script>
-  <script src="/__/firebase/5.6.0/firebase-database.js"></script>
-  <script src="/__/firebase/5.6.0/firebase-storage.js"></script>
-  <script src="/__/firebase/5.6.0/firebase-messaging.js"></script>
-  <script src="/__/firebase/init.js"></script>
-
-  <script src="scripts/main.js"></script>
+  <div class="profile">
+    <img src="https://www.designcrawl.com/wp-content/uploads/2014/07/07-01.jpg" alt="character profile" width="200"
+      height="200">
+    <div class="name">
+      <h1>Name Generator</h1>
+      <div class="next">
+        <div id="wordDisplay"></div>
+        <button onclick="randWordGen(); storeName();">Generate Name</button>
+        <br><br>
+        <span id="name"></span>
+      </div>
+    </div>
+  </div>
+  <form action="chat.html">
+    <button class="button">NEXT</button> </form>
 </body>
+<script src="scripts/localstorage.js"></script>
 
 </html>

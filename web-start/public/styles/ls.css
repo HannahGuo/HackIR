@@ -1,0 +1,69 @@
+.header {
+    padding: 20px;
+    margin: -10px;
+    text-align: center;
+    background: #a8a1e9;
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+}
+
+.profile{
+    margin: 50px 300px;
+    height: 200px;
+    border-radius: 100px;
+    background-color: #f1f1f1;
+}
+
+.profile img {
+    float: left;
+    height: 200px;
+    width: 200px;
+    margin: 0 10px 0 -50x;
+    border-radius: 50% 
+}
+
+.name {
+    float: left;
+    margin-left: 60px;
+    margin-top: 30px;
+    font-family: 'Roboto', sans-serif;
+}
+
+.next {
+    margin: 0px 90px;
+}
+
+#wordDisplay {
+    font-size: 20px;
+    float: center;
+}
+
+.checklist {
+    margin: 0px 400px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+}
+
+.checkone {
+    float: left;
+}
+
+.checktwo {
+    float: right;
+}
+
+.button {
+    height: 80px;
+    width: 150px;
+    font-size: 25px;
+    margin: 10px 560px;
+}
+
+.button:hover{
+    height: 80px;
+    width: 150px;
+    font-size: 25px;
+    margin: 10px 560px;
+    background-color: #a8a1e9;
+    color: rgb(255, 255, 255);
+}
