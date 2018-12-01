@@ -91,6 +91,8 @@ function showName() {
   document.getElementById("username").innerHTML = localStorage.getItem("username");
 }
 
+window.onload = showName;
+
 function generateTopic(rand) {
   return topics[rand];
 }
@@ -130,7 +132,6 @@ function genTop() {
   document.getElementById("top4").innerHTML = genTop[3];
 }
 
-window.onload = showName;
 window.onload = genTop;
 
 loadMessages();
