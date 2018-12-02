@@ -1,7 +1,10 @@
+// Written by Hannah Guo
+// With use of https://codelabs.developers.google.com/codelabs/firebase-web/
+
 'use strict';
 
 function getUserName() {
-  return localStorage.getItem("username").substring(15);
+  return localStorage.getItem("username").substring(15) || "Unknown User";
 }
 
 function loadMessages() {
@@ -83,47 +86,33 @@ messageFormElement.addEventListener('submit', onMessageFormSubmit);
 messageInputElement.addEventListener('keyup', toggleButton);
 messageInputElement.addEventListener('change', toggleButton);
 
-function showGameQ() {
-  document.getElementById("game").innerHTML = localStorage.getItem("games");
-}
-
 function showName() {
-  document.getElementById("username").innerHTML = localStorage.getItem("username");
-}
-
-window.onload = showName;
-
-function generateTopic(rand) {
-  return topics[rand];
+  document.getElementById("username").innerHTML = getUserName();
 }
 
 var topics = [
   "Favourite Movie",
   "Recent Marvel Events",
   "Harry Potter",
-  "Favourite bands", 
-  "Favourite Foods", 
-  "Latest Movie You've seen", 
-  "Favourite Subject", 
+  "Favourite bands",
+  "Favourite Foods",
+  "Latest Movie You've seen",
+  "Favourite Subject",
   "Dream Jobs",
   "Marvel vs. DC"
 ]
+
+function generateTopic(rand) {
+  return topics[rand];
+}
 
 function genTop() {
   var rand = Math.floor(Math.random() * (topics.length));
 
   var genTop = [generateTopic(rand), generateTopic(rand - 1), generateTopic(rand - 2), generateTopic(rand - 3)];
-  
-  if(genTop[1] === undefined) {
-    genTop[1] = generateTopic(rand + 1);
-  }
 
-  if(genTop[2] === undefined) {
-    genTop[2] = generateTopic(rand + 2);
-  }
-
-  if(genTop[3] === undefined) {
-    genTop[3] = generateTopic(rand + 3);
+  for (let i = 0; i < genTop.length; i++) {
+    if (genTop[i] === undefined) genTop[i] = generateTopic(rand + i);
   }
 
   document.getElementById("top1").innerHTML = genTop[0];
@@ -132,6 +121,9 @@ function genTop() {
   document.getElementById("top4").innerHTML = genTop[3];
 }
 
-window.onload = genTop;
+window.onload = function () {
+  genTop();
+  showName();
+}
 
 loadMessages();

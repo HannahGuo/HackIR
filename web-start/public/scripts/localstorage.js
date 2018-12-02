@@ -1,3 +1,5 @@
+// Writte by Emma and Hannah
+
 var cons = [
     'b',
     'c',
@@ -30,7 +32,6 @@ var vow = [
     'u'
 ]
 
-
 function randWordGen() {
     var randNumC = Math.floor(Math.random() * (cons.length));
     var randNumCo = Math.floor(Math.random() * (cons.length));
@@ -48,86 +49,8 @@ function randWordGen() {
 
         word = cons[a] + vow[c] + cons[b];
     }
-
     document.getElementById('name').innerHTML = ("Your Username: " + word).toUpperCase();
 }
-
-// function gameTopics() {
-//     var numPhrase = Math.floor(Math.random() * (topics.length));
-//     var phrase = topics[numPhrase];
-
-//     return phrase;
-// }
-
-// function checkGames() {
-//     var checkbox = document.getElementById("games");
-//     if (checkbox.checked) {
-//         console.log("plz");
-//         localStorage.setItem("games", gameTopics());
-//     } else {
-//         localStorage.setItem("games", "");
-//     }
-// }
-
-// function musicTopics() {
-//     var numPhrase = Math.floor(Math.random() * (topics1.length));
-//     var phrase = topics1[numPhrase];
-
-//     document.getElementById('text1').innerHTML = phrase;
-
-// }
-
-// function checkMusic() {
-//     var checkbox = document.getElementById('music');
-//     var text = document.getElementById("text1")
-
-//     if (checkbox.checked == true) {
-//         text.style.display = "block";
-//     } else {
-//         text.style.display = "none";
-//     }
-
-//     musicTopics();
-
-// }
-
-// function TvTopics() {
-//     var numPhrase = Math.floor(Math.random() * (topics2.length));
-//     var phrase = topics2[numPhrase];
-
-//     document.getElementById('text2').innerHTML = phrase;
-// }
-
-// function checkTv() {
-//     var checkbox = document.getElementById('tv');
-//     var text = document.getElementById("text2")
-
-//     if (checkbox.checked == true) {
-//         text.style.display = "block";
-//     } else {
-//         text.style.display = "none";
-//     }
-//     TvTopics();
-// }
-
-// function movieTopics() {
-//     var numPhrase = Math.floor(Math.random() * (topics2.length));
-//     var phrase = topics2[numPhrase];
-
-//     document.getElementById('text3').innerHTML = phrase;
-// }
-
-// function checkMovie() {
-//     var checkbox = document.getElementById('tv');
-//     var text = document.getElementById("text3")
-//     if (checkbox.checked == true) {
-//         text.style.display = "block";
-//     } else {
-//         text.style.display = "none";
-//     }
-
-//     movieTopics();
-// }
 
 function storeName() {
     localStorage.setItem("username", document.getElementById("name").innerHTML);
