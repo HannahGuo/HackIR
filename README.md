@@ -1,5 +1,3 @@
-![Logo](images/logo_talkntransit.jpg "Logo")
-
 # Talk 'n Transit
 An anonymous chat for people on transit to connect with others on the bus. The application provides prompt topics in order to start conversations, and randomly generated anonymous names. 
 
